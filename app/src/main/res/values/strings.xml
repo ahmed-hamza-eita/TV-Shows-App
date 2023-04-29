@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">Movie App</string>
+    <string name="movie_name">Movie name</string>
+    <string name="movie_info">Movie Info</string>
+    <string name="release_date">Release Date: </string>
+    <string name="date">date</string>
+    <string name="rating">Rating:</string>
+    <string name="rate">Rate</string>
+    <string name="run_time">Run Time:</string>
+    <string name="revenue">Revenue:</string>
+    <string name="overview">Overview</string>
+    <string name="tv_shows_most_popular">TV Shows | Most Popular</string>
+    <string name="tv_name">TV Name</string>
+    <string name="network">Network</string>
+    <string name="started">Started</string>
+    <string name="status">Status</string>
+</resources>
