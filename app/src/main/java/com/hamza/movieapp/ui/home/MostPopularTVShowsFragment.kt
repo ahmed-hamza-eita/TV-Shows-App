@@ -10,6 +10,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
+import androidx.recyclerview.widget.RecyclerView
 
 import com.hamza.movieapp.R
 import com.hamza.movieapp.adapters.TVShowsAdapter
@@ -28,7 +29,9 @@ class MostPopularTVShowsFragment : BaseFragment() {
     private val binding get() = _binding!!
     private val viewModel: MostPopularTVShowsViewModel by viewModels()
     private val adapter = TVShowsAdapter()
- //   private val list = ArrayList<TVShowModel.TvShow>()
+    private var currentPage = 1
+    private var totalAvailablePages = 1
+    //   private val list = ArrayList<TVShowModel.TvShow>()
 
 
     override fun onCreateView(
@@ -43,30 +46,36 @@ class MostPopularTVShowsFragment : BaseFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         _binding = MostPopularShowFragmentBinding.bind(view)
-        viewModel.getMostPopularTVShows(0)
+
         observer()
+        init()
 
     }
 
+    private fun init() {
+        viewModel.getMostPopularTVShows(currentPage)
+        binding.rvTvShow.addOnScrollListener(object : RecyclerView.OnScrollListener() {
+            override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
+                if (!binding.rvTvShow.canScrollVertically(1)) {
+                    if (currentPage <= totalAvailablePages) {
+                        currentPage++
+                        observer()
+                    }
+                }
+            }
+        })
+        observer()
+    }
 
 
     private fun observer() {
         ProgressLoading.show(myActivity!!)
         viewModel.mostPopularLiveData.observe(viewLifecycleOwner) {
             ProgressLoading.dismiss()
-//            if (it != null) {
-//                if (it.tvShows != null) {
-//                    adapter.list = it .tvShows as ArrayList<TVShowModel.TvShow>?
-//                    binding.rvTvShow.adapter = adapter
-//
-//                    adapter.notifyDataSetChanged()
-//                }
-//            }
-
             binding.rvTvShow.setHasFixedSize(true)
-
-            adapter.list =it?.tvShows as ArrayList<TVShowModel.TvShow>
+            adapter.list = it?.tvShows as ArrayList<TVShowModel.TvShow>
             binding.rvTvShow.adapter = adapter
+            totalAvailablePages = it.pages!!
         }
         viewModel.errorLiveData.observe(viewLifecycleOwner) {
             ProgressLoading.dismiss()
