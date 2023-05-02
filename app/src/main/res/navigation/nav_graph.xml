@@ -10,5 +10,18 @@
         tools:layout="@layout/most_popular_show_fragment"
         android:id="@+id/mostPopularTVShowsFragment"
         android:name="com.hamza.movieapp.ui.home.MostPopularTVShowsFragment"
-        android:label="MostPopularTVShowsFragment" />
+        android:label="MostPopularTVShowsFragment" >
+        <action
+            android:id="@+id/action_mostPopularTVShowsFragment_to_detailsFragment"
+            app:destination="@id/detailsFragment" />
+    </fragment>
+    <fragment
+        tools:layout="@layout/details_fragment"
+        android:id="@+id/detailsFragment"
+        android:name="com.hamza.movieapp.ui.details.DetailsFragment"
+        android:label="DetailsFragment" >
+        <argument
+            android:name="id"
+            app:argType="string" />
+    </fragment>
 </navigation>

@@ -18,10 +18,18 @@ class MostPopularTVShowsViewModel @Inject constructor(private val repository: Mo
     var mostPopularLiveData =repository._mostPopularLiveData
     val errorLiveData   = repository._errorLiveData
 
-    fun getMostPopularTVShows(page: Int) {
+//    fun getMostPopularTVShows(page: Int) {
+//
+//        return repository.getMostPopularTVShows(page)
+//
+//
+//    }
+fun getMostPopularTVShows(page: Int) {
 
-        return repository.getMostPopularTVShows(page)
+    return repository.getMostPopularTVShows(page)
 
 
-    }
+}
+
+
 }

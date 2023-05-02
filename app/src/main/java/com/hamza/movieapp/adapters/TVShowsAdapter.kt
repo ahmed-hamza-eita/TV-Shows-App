@@ -2,9 +2,7 @@ package com.hamza.movieapp.adapters
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
-import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.bumptech.glide.Glide
 import com.hamza.movieapp.data.models.TVShowModel
 import com.hamza.movieapp.databinding.ItemContainerTvShowBinding
@@ -43,7 +41,7 @@ class TVShowsAdapter : RecyclerView.Adapter<TVShowsAdapter.Holder>() {
     }
 
     override fun getItemCount(): Int {
-        return list?.size ?: 0
+        return list.size ?: 0
     }
 
     inner class Holder constructor(val binding: ItemContainerTvShowBinding) :
@@ -55,10 +53,7 @@ class TVShowsAdapter : RecyclerView.Adapter<TVShowsAdapter.Holder>() {
             }
         }
 
-//        fun bindTVShow(tvShow: TVShowModel.TvShow) {
-//            binding.tvShow = tvShow
-//            binding.executePendingBindings()
-//        }
+
     }
 
 

@@ -1,16 +1,10 @@
 package com.hamza.movieapp.ui.home;
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.annotation.LayoutRes
-import androidx.databinding.DataBindingUtil
-import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.Observer
-import androidx.recyclerview.widget.RecyclerView
 
 import com.hamza.movieapp.R
 import com.hamza.movieapp.adapters.TVShowsAdapter
@@ -30,7 +24,7 @@ class MostPopularTVShowsFragment : BaseFragment() {
     private val viewModel: MostPopularTVShowsViewModel by viewModels()
     private val adapter = TVShowsAdapter()
     private var currentPage = 1
-    private var totalAvailablePages = 1
+    //  private var totalAvailablePages = 1
     //   private val list = ArrayList<TVShowModel.TvShow>()
 
 
@@ -49,22 +43,24 @@ class MostPopularTVShowsFragment : BaseFragment() {
 
         observer()
         init()
+        actions()
 
+    }
+
+    private fun actions() {
+        adapter.onItemClick = object : TVShowsAdapter.OnItemClick {
+            override fun onItemClick(id: Int) {
+                navigate(
+                    MostPopularTVShowsFragmentDirections.actionMostPopularTVShowsFragmentToDetailsFragment(
+                        id.toString()
+                    )
+                )
+            }
+        }
     }
 
     private fun init() {
         viewModel.getMostPopularTVShows(currentPage)
-        binding.rvTvShow.addOnScrollListener(object : RecyclerView.OnScrollListener() {
-            override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
-                if (!binding.rvTvShow.canScrollVertically(1)) {
-                    if (currentPage <= totalAvailablePages) {
-                        currentPage++
-                        observer()
-                    }
-                }
-            }
-        })
-        observer()
     }
 
 
@@ -75,7 +71,7 @@ class MostPopularTVShowsFragment : BaseFragment() {
             binding.rvTvShow.setHasFixedSize(true)
             adapter.list = it?.tvShows as ArrayList<TVShowModel.TvShow>
             binding.rvTvShow.adapter = adapter
-            totalAvailablePages = it.pages!!
+
         }
         viewModel.errorLiveData.observe(viewLifecycleOwner) {
             ProgressLoading.dismiss()
