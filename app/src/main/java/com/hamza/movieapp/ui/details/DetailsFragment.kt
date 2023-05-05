@@ -9,6 +9,7 @@ import android.widget.LinearLayout
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.viewModels
 import androidx.viewpager2.widget.ViewPager2
+import com.bumptech.glide.Glide
 import com.hamza.movieapp.R
 import com.hamza.movieapp.adapters.ImageSliderAdapter
 import com.hamza.movieapp.data.viewmodels.GetDetailsViewModel
@@ -61,10 +62,20 @@ class DetailsFragment : BaseFragment() {
             ProgressLoading.dismiss()
             imageSliderAdapter.sliderImage = it?.tvShow?.pictures
             binding.sliderViewPager.adapter = imageSliderAdapter
+            binding.apply {
+                it?.tvShow?.apply {
+                    Glide.with(myContext!!).load(imageThumbnailPath).into(tvImg)
+                    txtName.text = name
+                    txtNetwork.text  = network
+                    txtStarted.text  = startDate
+                    txtStatus.text  = status
+
+                }
+            }
 
             //Managing SliderImage(ViewPager)
             binding.sliderViewPager.offscreenPageLimit = 1
-            setupSliderIndicators(((imageSliderAdapter.itemCount)/2))
+            setupSliderIndicators(((imageSliderAdapter.itemCount) / 2))
             binding.sliderViewPager.registerOnPageChangeCallback(object :
                 ViewPager2.OnPageChangeCallback() {
                 override fun onPageSelected(position: Int) {
