@@ -16,4 +16,6 @@
     <string name="status">Status</string>
     <string name="read_more">Read More</string>
     <string name="read_less">Read Less</string>
+    <string name="u2022">*</string>
+    <string name="genre">Genre</string>
 </resources>

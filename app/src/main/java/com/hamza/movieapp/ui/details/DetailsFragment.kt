@@ -1,5 +1,6 @@
 package com.hamza.movieapp.ui.details;
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.text.TextUtils
 import android.view.LayoutInflater
@@ -21,6 +22,7 @@ import com.hamza.movieapp.utils.ProgressLoading
 import com.hamza.movieapp.utils.showToast
 import com.hamza.movieapp.utils.visibilityVisible
 import dagger.hilt.android.AndroidEntryPoint
+import java.util.*
 
 @AndroidEntryPoint
 class DetailsFragment : BaseFragment() {
@@ -52,6 +54,7 @@ class DetailsFragment : BaseFragment() {
         observe()
     }
 
+    @SuppressLint("SetTextI18n")
     private fun observe() {
         ProgressLoading.show(myActivity!!)
         viewModel.getDetails(id!!)
@@ -71,6 +74,7 @@ class DetailsFragment : BaseFragment() {
                     txtNetwork.text = network
                     txtStarted.text = startDate
                     txtStatus.text = status
+                    //Customize Description text
                     txtDescription.text = HtmlCompat.fromHtml(
                         description,
                         HtmlCompat.FROM_HTML_MODE_LEGACY
@@ -86,6 +90,21 @@ class DetailsFragment : BaseFragment() {
                             txtReadMore.text = getString(R.string.read_more)
                         }
                     }
+                    //Customize Rating
+                    txtRating.text = String.format(
+                        Locale.getDefault(),
+                        "%.2f",
+                        rating.toDouble()
+                    )
+
+                    //Customize Genre
+                    if (genres != null) {
+                        txtGenre.text = genres[0]
+                    } else {
+                        txtGenre.text = "N/A"
+                    }
+
+                    txtRunTime.text = runtime.toString() + " Min"
 
                 }
             }

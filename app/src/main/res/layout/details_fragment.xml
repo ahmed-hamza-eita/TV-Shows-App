@@ -1,138 +1,230 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimary">
 
-
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/colorPrimary">
+        android:layout_height="match_parent">
 
-        <androidx.viewpager2.widget.ViewPager2
-            android:id="@+id/sliderViewPager"
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="@dimen/_160sdp"
-            android:orientation="horizontal"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:layout_height="match_parent">
 
-        <View
-            android:id="@+id/viewFading"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/_40sdp"
-            android:background="@drawable/background_fading_edge"
-            app:layout_constraintBottom_toBottomOf="@id/sliderViewPager" />
+            <androidx.viewpager2.widget.ViewPager2
+                android:id="@+id/sliderViewPager"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_160sdp"
+                android:orientation="horizontal"
+                app:layout_constraintTop_toTopOf="parent" />
 
-        <LinearLayout
-            android:id="@+id/layoutSliderIndicator"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:gravity="end|center_vertical"
-            android:orientation="horizontal"
-            android:padding="@dimen/_8sdp"
-            app:layout_constraintBottom_toBottomOf="@id/viewFading"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/tv_img" />
+            <View
+                android:id="@+id/viewFading"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_40sdp"
+                android:background="@drawable/background_fading_edge"
+                app:layout_constraintBottom_toBottomOf="@id/sliderViewPager" />
 
-        <com.makeramen.roundedimageview.RoundedImageView
-            android:id="@+id/tv_img"
-            android:layout_width="@dimen/_100sdp"
-            android:layout_height="@dimen/_150sdp"
-            android:layout_marginStart="@dimen/_10sdp"
-            android:layout_marginEnd="@dimen/_8sdp"
-            android:scaleType="centerCrop"
-            android:src="@drawable/pic"
-            app:layout_constraintBottom_toBottomOf="@id/sliderViewPager"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/sliderViewPager"
-            app:riv_corner_radius="@dimen/_6sdp" />
+            <LinearLayout
+                android:id="@+id/layoutSliderIndicator"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:gravity="end|center_vertical"
+                android:orientation="horizontal"
+                android:padding="@dimen/_8sdp"
+                app:layout_constraintBottom_toBottomOf="@id/viewFading"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/tv_img" />
 
-        <TextView
-            android:id="@+id/txtName"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/_8sdp"
-            android:layout_marginTop="@dimen/_20sdp"
-            android:layout_marginEnd="@dimen/_8sdp"
-            android:fontFamily="@font/ubuntu_medium"
-            android:includeFontPadding="false"
-            android:paddingTop="@dimen/_4sdp"
-            android:text="@string/tv_name"
-            android:textColor="@color/colorTextPrimary"
-            android:textSize="@dimen/_13ssp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/tv_img"
-            app:layout_constraintTop_toTopOf="@id/tv_img" />
+            <com.makeramen.roundedimageview.RoundedImageView
+                android:id="@+id/tv_img"
+                android:layout_width="@dimen/_100sdp"
+                android:layout_height="@dimen/_150sdp"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:layout_marginEnd="@dimen/_8sdp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/pic"
+                app:layout_constraintBottom_toBottomOf="@id/sliderViewPager"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/sliderViewPager"
+                app:riv_corner_radius="@dimen/_6sdp" />
 
-        <TextView
-            android:id="@+id/txtNetwork"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/_3sdp"
-            android:fontFamily="@font/ubuntu_regular"
-            android:includeFontPadding="false"
-            android:text="@string/network"
-            android:textColor="@color/colorTextOther"
-            android:textSize="@dimen/_12ssp"
-            app:layout_constraintEnd_toEndOf="@id/txtName"
-            app:layout_constraintStart_toStartOf="@id/txtName"
-            app:layout_constraintTop_toBottomOf="@id/txtName" />
+            <TextView
+                android:id="@+id/txtName"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_8sdp"
+                android:layout_marginTop="@dimen/_20sdp"
+                android:layout_marginEnd="@dimen/_8sdp"
+                android:fontFamily="@font/ubuntu_medium"
+                android:includeFontPadding="false"
+                android:paddingTop="@dimen/_4sdp"
+                android:text="@string/tv_name"
+                android:textColor="@color/colorTextPrimary"
+                android:textSize="@dimen/_13ssp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/tv_img"
+                app:layout_constraintTop_toTopOf="@id/tv_img" />
 
-        <TextView
-            android:id="@+id/txt_started"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/_3sdp"
-            android:fontFamily="@font/ubuntu_regular"
-            android:includeFontPadding="false"
-            android:text="@string/started"
-            android:textColor="@color/colorTextSecondary"
-            android:textSize="@dimen/_12ssp"
-            app:layout_constraintEnd_toEndOf="@id/txtName"
-            app:layout_constraintStart_toStartOf="@id/txtName"
-            app:layout_constraintTop_toBottomOf="@id/txtNetwork" />
+            <TextView
+                android:id="@+id/txtNetwork"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_3sdp"
+                android:fontFamily="@font/ubuntu_regular"
+                android:includeFontPadding="false"
+                android:text="@string/network"
+                android:textColor="@color/colorTextOther"
+                android:textSize="@dimen/_12ssp"
+                app:layout_constraintEnd_toEndOf="@id/txtName"
+                app:layout_constraintStart_toStartOf="@id/txtName"
+                app:layout_constraintTop_toBottomOf="@id/txtName" />
 
-        <TextView
-            android:id="@+id/txtStatus"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/_3sdp"
-            android:fontFamily="@font/ubuntu_regular"
-            android:includeFontPadding="false"
-            android:text="@string/status"
-            android:textColor="@android:color/holo_green_light"
-            android:textSize="@dimen/_12ssp"
-            app:layout_constraintEnd_toEndOf="@id/txtName"
-            app:layout_constraintStart_toStartOf="@id/txtName"
-            app:layout_constraintTop_toBottomOf="@id/txt_started" />
+            <TextView
+                android:id="@+id/txt_started"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_3sdp"
+                android:fontFamily="@font/ubuntu_regular"
+                android:includeFontPadding="false"
+                android:text="@string/started"
+                android:textColor="@color/colorTextSecondary"
+                android:textSize="@dimen/_12ssp"
+                app:layout_constraintEnd_toEndOf="@id/txtName"
+                app:layout_constraintStart_toStartOf="@id/txtName"
+                app:layout_constraintTop_toBottomOf="@id/txtNetwork" />
 
-        <TextView
-            android:id="@+id/txt_description"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/_8sdp"
-            android:layout_marginTop="@dimen/_5sdp"
-            android:ellipsize="end"
-            android:fontFamily="@font/ubuntu_medium"
-            android:includeFontPadding="false"
-            android:lineSpacingExtra="@dimen/_2sdp"
-            android:maxLines="3"
-            android:textColor="@color/colorTextIcons"
-            android:textSize="@dimen/_12ssp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tv_img" />
+            <TextView
+                android:id="@+id/txtStatus"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_3sdp"
+                android:fontFamily="@font/ubuntu_regular"
+                android:includeFontPadding="false"
+                android:text="@string/status"
+                android:textColor="@android:color/holo_green_light"
+                android:textSize="@dimen/_12ssp"
+                app:layout_constraintEnd_toEndOf="@id/txtName"
+                app:layout_constraintStart_toStartOf="@id/txtName"
+                app:layout_constraintTop_toBottomOf="@id/txt_started" />
 
-        <TextView
-            android:id="@+id/txt_readMore"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/_3sdp"
-            android:fontFamily="@font/ubuntu_medium"
-            android:includeFontPadding="false"
-            android:text="@string/read_more"
-            android:textColor="@color/colorAccent"
-            android:textSize="@dimen/_12ssp"
-            app:layout_constraintStart_toStartOf="@id/txt_description"
-            app:layout_constraintTop_toBottomOf="@id/txt_description" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
-</layout>
+            <TextView
+                android:id="@+id/txt_description"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_8sdp"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:ellipsize="end"
+                android:fontFamily="@font/ubuntu_medium"
+                android:includeFontPadding="false"
+                android:lineSpacingExtra="@dimen/_2sdp"
+                android:maxLines="3"
+                android:textColor="@color/colorTextIcons"
+                android:textSize="@dimen/_12ssp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_img" />
+
+            <TextView
+                android:id="@+id/txt_readMore"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_3sdp"
+                android:layout_marginBottom="@dimen/_3sdp"
+                android:fontFamily="@font/ubuntu_medium"
+                android:includeFontPadding="false"
+                android:text="@string/read_more"
+                android:textColor="@color/colorAccent"
+                android:textSize="@dimen/_12ssp"
+                app:layout_constraintStart_toStartOf="@id/txt_description"
+                app:layout_constraintTop_toBottomOf="@id/txt_description" />
+
+            <View
+                android:id="@+id/divier1"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginStart="@dimen/_8sdp"
+                android:layout_marginTop="@dimen/_8sdp"
+                android:layout_marginEnd="@dimen/_8sdp"
+                android:background="@color/colorTextSecondary"
+                app:layout_constraintTop_toBottomOf="@id/txt_readMore" />
+
+            <LinearLayout
+                android:id="@+id/layoutMisc"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_8sdp"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:layout_marginEnd="@dimen/_8sdp"
+                android:gravity="center"
+                android:orientation="horizontal"
+                app:layout_constraintTop_toBottomOf="@id/divier1">
+
+                <ImageView
+                    android:layout_width="@dimen/_20sdp"
+                    android:layout_height="@dimen/_20sdp"
+                    android:contentDescription="@string/app_name"
+                    android:src="@drawable/ic_round_star"
+                    app:tint="@color/colorTextOther" />
+
+                <TextView
+                    android:id="@+id/txt_rating"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_5sdp"
+                    android:fontFamily="@font/ubuntu_regular"
+                    android:includeFontPadding="false"
+                    android:text="@string/rating"
+                    android:textColor="@color/colorTextIcons"
+                    android:textSize="@dimen/_12ssp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_8sdp"
+                    android:fontFamily="@font/ubuntu_bold"
+                    android:includeFontPadding="false"
+                    android:text="@string/u2022"
+                    android:textColor="@color/colorAccent"
+                    android:textSize="@dimen/_13ssp" />
+
+                <TextView
+                    android:id="@+id/txt_genre"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_8sdp"
+                    android:fontFamily="@font/ubuntu_regular"
+                    android:includeFontPadding="false"
+                    android:text="@string/genre"
+                    android:textColor="@color/colorTextIcons"
+                    android:textSize="@dimen/_12ssp" />
+
+                <TextView
+                    android:id="@+id/txt_runTime"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_8sdp"
+                    android:fontFamily="@font/ubuntu_regular"
+                    android:includeFontPadding="false"
+                    android:text="@string/run_time"
+                    android:textColor="@color/colorTextIcons"
+                    android:textSize="@dimen/_12ssp" />
+
+            </LinearLayout>
+            <View
+                android:id="@+id/divier2"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginStart="@dimen/_8sdp"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:layout_marginEnd="@dimen/_8sdp"
+                android:background="@color/colorTextSecondary"
+                app:layout_constraintTop_toBottomOf="@id/layoutMisc" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+ 
