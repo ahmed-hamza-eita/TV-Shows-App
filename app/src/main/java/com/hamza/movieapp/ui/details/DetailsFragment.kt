@@ -1,12 +1,14 @@
 package com.hamza.movieapp.ui.details;
 
 import android.os.Bundle
+import android.text.TextUtils
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.LinearLayout
 import androidx.core.content.ContextCompat
+import androidx.core.text.HtmlCompat
 import androidx.fragment.app.viewModels
 import androidx.viewpager2.widget.ViewPager2
 import com.bumptech.glide.Glide
@@ -66,9 +68,24 @@ class DetailsFragment : BaseFragment() {
                 it?.tvShow?.apply {
                     Glide.with(myContext!!).load(imageThumbnailPath).into(tvImg)
                     txtName.text = name
-                    txtNetwork.text  = network
-                    txtStarted.text  = startDate
-                    txtStatus.text  = status
+                    txtNetwork.text = network
+                    txtStarted.text = startDate
+                    txtStatus.text = status
+                    txtDescription.text = HtmlCompat.fromHtml(
+                        description,
+                        HtmlCompat.FROM_HTML_MODE_LEGACY
+                    )
+                    txtReadMore.setOnClickListener {
+                        if (txtReadMore.text == "Read More") {
+                            txtDescription.maxLines = Int.MAX_VALUE
+                            txtDescription.ellipsize = null
+                            txtReadMore.text = getString(R.string.read_less)
+                        } else {
+                            txtDescription.maxLines = 3
+                            txtDescription.ellipsize = TextUtils.TruncateAt.END
+                            txtReadMore.text = getString(R.string.read_more)
+                        }
+                    }
 
                 }
             }

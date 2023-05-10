@@ -29,9 +29,9 @@
             android:gravity="end|center_vertical"
             android:orientation="horizontal"
             android:padding="@dimen/_8sdp"
-            app:layout_constraintStart_toEndOf="@id/tv_img"
             app:layout_constraintBottom_toBottomOf="@id/viewFading"
-            app:layout_constraintEnd_toEndOf="parent" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/tv_img" />
 
         <com.makeramen.roundedimageview.RoundedImageView
             android:id="@+id/tv_img"
@@ -104,5 +104,35 @@
             app:layout_constraintEnd_toEndOf="@id/txtName"
             app:layout_constraintStart_toStartOf="@id/txtName"
             app:layout_constraintTop_toBottomOf="@id/txt_started" />
+
+        <TextView
+            android:id="@+id/txt_description"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_8sdp"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:ellipsize="end"
+            android:fontFamily="@font/ubuntu_medium"
+            android:includeFontPadding="false"
+            android:lineSpacingExtra="@dimen/_2sdp"
+            android:maxLines="3"
+            android:textColor="@color/colorTextIcons"
+            android:textSize="@dimen/_12ssp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_img" />
+
+        <TextView
+            android:id="@+id/txt_readMore"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_3sdp"
+            android:fontFamily="@font/ubuntu_medium"
+            android:includeFontPadding="false"
+            android:text="@string/read_more"
+            android:textColor="@color/colorAccent"
+            android:textSize="@dimen/_12ssp"
+            app:layout_constraintStart_toStartOf="@id/txt_description"
+            app:layout_constraintTop_toBottomOf="@id/txt_description" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
