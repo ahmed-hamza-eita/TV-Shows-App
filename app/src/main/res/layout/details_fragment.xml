@@ -213,6 +213,7 @@
                     android:textSize="@dimen/_12ssp" />
 
             </LinearLayout>
+
             <View
                 android:id="@+id/divier2"
                 android:layout_width="match_parent"
@@ -222,6 +223,44 @@
                 android:layout_marginEnd="@dimen/_8sdp"
                 android:background="@color/colorTextSecondary"
                 app:layout_constraintTop_toBottomOf="@id/layoutMisc" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/txt_gotoSite"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/_8sdp"
+                android:fontFamily="@font/ubuntu_medium"
+                android:includeFontPadding="false"
+                android:text="@string/website"
+                android:textAllCaps="false"
+                android:backgroundTint="@color/colorAccent"
+                android:textSize="@dimen/_12ssp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/txt_gotoEposide"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/divier2" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/txt_gotoEposide"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_4sdp"
+                android:layout_marginTop="@dimen/_8sdp"
+                android:layout_marginEnd="@dimen/_8sdp"
+                android:layout_marginBottom="@dimen/_8sdp"
+                android:fontFamily="@font/ubuntu_medium"
+                android:includeFontPadding="false"
+                android:text="@string/episodes"
+                android:textAllCaps="false"
+                android:textColor="@color/black"
+                android:backgroundTint="@color/colorTextOther"
+                android:textSize="@dimen/_12ssp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+
+                app:layout_constraintStart_toEndOf="@+id/txt_gotoSite"
+                app:layout_constraintTop_toBottomOf="@id/divier2" />
+
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
 

@@ -1,6 +1,7 @@
 package com.hamza.movieapp.ui.details;
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.os.Bundle
 import android.text.TextUtils
 import android.view.LayoutInflater
@@ -9,6 +10,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.LinearLayout
 import androidx.core.content.ContextCompat
+import androidx.core.net.toUri
 import androidx.core.text.HtmlCompat
 import androidx.fragment.app.viewModels
 import androidx.viewpager2.widget.ViewPager2
@@ -104,7 +106,14 @@ class DetailsFragment : BaseFragment() {
                         txtGenre.text = "N/A"
                     }
 
-                    txtRunTime.text = runtime.toString() + " Min"
+                    txtRunTime.text = "$runtime Min"
+                    val ur = url
+                    txtGotoSite.setOnClickListener {
+                        val i = Intent(Intent.ACTION_VIEW)
+                        i.data = ur.toUri()
+                        startActivity(i)
+
+                    }
 
                 }
             }
