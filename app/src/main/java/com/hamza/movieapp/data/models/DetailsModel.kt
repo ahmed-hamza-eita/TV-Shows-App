@@ -55,11 +55,11 @@ data class DetailsModel(
             @SerializedName("air_date")
             val airDate: String,
             @SerializedName("episode")
-            val episode: Int,
+            val episode: String,
             @SerializedName("name")
             val name: String,
             @SerializedName("season")
-            val season: Int
+            val season: String
         )
     }
 }

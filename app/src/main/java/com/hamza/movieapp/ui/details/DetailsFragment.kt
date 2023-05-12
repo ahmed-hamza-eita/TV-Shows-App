@@ -15,6 +15,7 @@ import androidx.core.text.HtmlCompat
 import androidx.fragment.app.viewModels
 import androidx.viewpager2.widget.ViewPager2
 import com.bumptech.glide.Glide
+import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.hamza.movieapp.R
 import com.hamza.movieapp.adapters.ImageSliderAdapter
 import com.hamza.movieapp.data.viewmodels.GetDetailsViewModel
@@ -24,6 +25,7 @@ import com.hamza.movieapp.utils.ProgressLoading
 import com.hamza.movieapp.utils.showToast
 import com.hamza.movieapp.utils.visibilityVisible
 import dagger.hilt.android.AndroidEntryPoint
+import dagger.hilt.android.qualifiers.ApplicationContext
 import java.util.*
 
 @AndroidEntryPoint
@@ -32,10 +34,11 @@ class DetailsFragment : BaseFragment() {
     private var _binding: DetailsFragmentBinding? = null
     private val binding get() = _binding!!
 
-    // lateinit var binding: DetailsFragmentBinding
+
     private val viewModel: GetDetailsViewModel by viewModels()
     private var id: String? = null
     private val imageSliderAdapter = ImageSliderAdapter()
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -54,7 +57,9 @@ class DetailsFragment : BaseFragment() {
 
 
         observe()
+
     }
+
 
     @SuppressLint("SetTextI18n")
     private fun observe() {
@@ -113,6 +118,12 @@ class DetailsFragment : BaseFragment() {
                         i.data = ur.toUri()
                         startActivity(i)
 
+                    }
+
+                    binding.txtGotoEposide.setOnClickListener {it2->
+                        navigate(
+                            DetailsFragmentDirections.actionDetailsFragmentToLayoutEposidesBottomSheet(it.tvShow.id.toString())
+                        )
                     }
 
                 }
@@ -180,6 +191,9 @@ class DetailsFragment : BaseFragment() {
     override fun onDestroy() {
         super.onDestroy()
         _binding = null
+        //   _bindingEpisodeSheetBinding = null
     }
 
 }
+
+

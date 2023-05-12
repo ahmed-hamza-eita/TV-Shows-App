@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import androidx.navigation.NavDirections
 import androidx.navigation.Navigation
+import dagger.hilt.android.qualifiers.ApplicationContext
 
 
 open class BaseFragment : Fragment() {

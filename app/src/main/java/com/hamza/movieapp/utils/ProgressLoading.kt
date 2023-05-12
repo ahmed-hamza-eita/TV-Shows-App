@@ -5,7 +5,9 @@ import android.app.Dialog
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.view.ViewGroup
+import androidx.fragment.app.FragmentActivity
 import com.hamza.movieapp.R
+import layout.LayoutEposidesBottomSheet
 
 object ProgressLoading {
     private var progress: Dialog? = null
@@ -22,7 +24,7 @@ object ProgressLoading {
         )
     } // init
 
-    fun show(activity: Activity) {
+    fun show(activity: FragmentActivity) {
 
 
         if (!hasActivity) {
