@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/_8sdp"
+    android:background="@drawable/backgeound_tv_show"
+    android:orientation="vertical"
+    android:padding="@dimen/_8sdp">
+
+    <TextView
+        android:id="@+id/txt_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/ubuntu_bold"
+        android:includeFontPadding="false"
+        android:text="@string/title"
+        android:textColor="@color/colorTextIcons"
+        android:textSize="@dimen/_13ssp" />
+
+    <TextView
+        android:id="@+id/txt_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/ubuntu_medium"
+        android:layout_marginTop="@dimen/_3sdp"
+        android:includeFontPadding="false"
+        android:text="@string/movie_name"
+        android:textColor="@color/colorTextIcons"
+        android:textSize="@dimen/_12ssp" />
+
+    <TextView
+        android:id="@+id/txt_airDate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/ubuntu_regular"
+        android:layout_marginTop="@dimen/_3sdp"
+        android:includeFontPadding="false"
+        android:text="@string/date"
+        android:textColor="@color/colorTextIcons"
+        android:textSize="@dimen/_10ssp" />
+</LinearLayout>

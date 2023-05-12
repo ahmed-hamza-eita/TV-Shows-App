@@ -20,4 +20,5 @@
     <string name="genre">Genre</string>
     <string name="website">Website</string>
     <string name="episodes">Episodes</string>
+    <string name="title">Title</string>
 </resources>
