@@ -15,9 +15,9 @@ import androidx.core.text.HtmlCompat
 import androidx.fragment.app.viewModels
 import androidx.viewpager2.widget.ViewPager2
 import com.bumptech.glide.Glide
-import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.hamza.movieapp.R
 import com.hamza.movieapp.adapters.ImageSliderAdapter
+import com.hamza.movieapp.data.models.TVShowModel
 import com.hamza.movieapp.data.viewmodels.GetDetailsViewModel
 import com.hamza.movieapp.databinding.DetailsFragmentBinding
 import com.hamza.movieapp.utils.BaseFragment
@@ -25,7 +25,9 @@ import com.hamza.movieapp.utils.ProgressLoading
 import com.hamza.movieapp.utils.showToast
 import com.hamza.movieapp.utils.visibilityVisible
 import dagger.hilt.android.AndroidEntryPoint
-import dagger.hilt.android.qualifiers.ApplicationContext
+import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.disposables.CompositeDisposable
+import io.reactivex.schedulers.Schedulers
 import java.util.*
 
 @AndroidEntryPoint
@@ -38,6 +40,7 @@ class DetailsFragment : BaseFragment() {
     private val viewModel: GetDetailsViewModel by viewModels()
     private var id: String? = null
     private val imageSliderAdapter = ImageSliderAdapter()
+    private val tvShow: TVShowModel.TvShow? = null
 
 
     override fun onCreateView(
@@ -56,6 +59,7 @@ class DetailsFragment : BaseFragment() {
         id = DetailsFragmentArgs.fromBundle(requireArguments()).id
 
 
+
         observe()
 
     }
@@ -70,12 +74,12 @@ class DetailsFragment : BaseFragment() {
             showToast(it)
 
         }
-        viewModel.detailsLiveData.observe(viewLifecycleOwner) {
+        viewModel.detailsLiveData.observe(viewLifecycleOwner) { result ->
             ProgressLoading.dismiss()
-            imageSliderAdapter.sliderImage = it?.tvShow?.pictures
+            imageSliderAdapter.sliderImage = result?.tvShow?.pictures
             binding.sliderViewPager.adapter = imageSliderAdapter
             binding.apply {
-                it?.tvShow?.apply {
+                result?.tvShow?.apply {
                     Glide.with(myContext!!).load(imageThumbnailPath).into(tvImg)
                     txtName.text = name
                     txtNetwork.text = network
@@ -120,12 +124,25 @@ class DetailsFragment : BaseFragment() {
 
                     }
 
-                    binding.txtGotoEposide.setOnClickListener {it2->
+                    binding.txtGotoEposide.setOnClickListener { it2 ->
                         navigate(
-                            DetailsFragmentDirections.actionDetailsFragmentToLayoutEposidesBottomSheet(it.tvShow.id.toString())
+                            DetailsFragmentDirections.actionDetailsFragmentToLayoutEposidesBottomSheet(
+                                result.tvShow.id.toString()
+                            )
                         )
                     }
-
+//                    binding.imageWatchlist.setOnClickListener {
+//                        CompositeDisposable()
+//                            .add(
+//                                viewModel.addToWatchlist(tvShow!!)
+//                                    .subscribeOn(Schedulers.io()).observeOn(
+//                                        AndroidSchedulers.mainThread()
+//                                    ).subscribe {
+//                                        binding.imageWatchlist.setImageResource(R.drawable.ic_added)
+//                                        showToast("Added to watchlist")
+//                                    }
+//                            )
+//                    }
                 }
             }
 

@@ -10,14 +10,15 @@ import io.reactivex.Flowable
 
 @androidx.room.Dao
 interface Dao {
+
     @Query("SELECT * FROM tvShows")
-    fun getWatchList(): Flowable<List<TVShowModel.TvShow>>
+    fun getDataLocal(): Flowable<List<TVShowModel >>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun addToWatchlist(tvShow: TVShowModel.TvShow): Completable
+    fun setDataLocal(tvShow: TVShowModel ): Completable
 
     @Delete
-    fun removeFromWishList(tvShow: TVShowModel.TvShow)
+    fun removeFromWishList(tvShow: TVShowModel )
 
 
 }

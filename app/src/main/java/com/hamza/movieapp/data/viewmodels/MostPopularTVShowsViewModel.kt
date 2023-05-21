@@ -12,24 +12,16 @@ import javax.inject.Inject
 @HiltViewModel
 class MostPopularTVShowsViewModel @Inject constructor(private val repository: MostPopularRepository) :
     ViewModel() {
-    //        fun getMostPopularTVShows(page:Int): MutableLiveData<TVShowModel?> {
-//            return repository.getMostPopularTVShows(page)
-//        }
-    var mostPopularLiveData =repository._mostPopularLiveData
-    val errorLiveData   = repository._errorLiveData
 
-//    fun getMostPopularTVShows(page: Int) {
-//
-//        return repository.getMostPopularTVShows(page)
-//
-//
-//    }
-fun getMostPopularTVShows(page: Int) {
+    var mostPopularLiveData = repository._mostPopularLiveData
+    val errorLiveData = repository._errorLiveData
 
-    return repository.getMostPopularTVShows(page)
+    fun getMostPopularTVShows(page: Int) {
+
+        return repository.getMostPopularTVShows(page)
 
 
-}
+    }
 
 
 }

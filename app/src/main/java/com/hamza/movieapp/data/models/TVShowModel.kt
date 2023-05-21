@@ -7,9 +7,12 @@ import androidx.room.TypeConverters
 import com.google.gson.annotations.SerializedName
 import com.hamza.movieapp.data.local.Converters
 
+@Entity(tableName = "tvShows")
 data class TVShowModel(
     @SerializedName("page")
     val page: Int? = null,
+    @PrimaryKey(autoGenerate = true)
+    val k: Int? = null,
     @SerializedName("pages")
     val pages: Int? = null,
     @SerializedName("total")
@@ -18,7 +21,7 @@ data class TVShowModel(
     @TypeConverters(Converters::class)
     val tvShows: List<TvShow>? = null
 ) {
-    @Entity(tableName = "tvShows")
+
     data class TvShow(
         @SerializedName("country")
         val country: String,

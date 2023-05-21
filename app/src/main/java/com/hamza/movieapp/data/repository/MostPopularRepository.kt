@@ -2,6 +2,7 @@ package com.hamza.movieapp.data.repository
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import com.hamza.movieapp.data.local.Dao
 import com.hamza.movieapp.data.models.TVShowModel
 import com.hamza.movieapp.data.network.ApiCalls
 
@@ -10,7 +11,7 @@ import retrofit2.Response
 import javax.inject.Inject
 import javax.security.auth.callback.Callback
 
-class MostPopularRepository @Inject constructor(private val api: ApiCalls) {
+class MostPopularRepository @Inject constructor(private val api: ApiCalls, private val local: Dao) {
 
 
     val _mostPopularLiveData = MutableLiveData<TVShowModel?>()
@@ -26,11 +27,13 @@ class MostPopularRepository @Inject constructor(private val api: ApiCalls) {
                 ) {
                     _mostPopularLiveData.value = response.body()
                     _mostPopularLiveData.postValue(response.body())
+                    local.setDataLocal(response.body()!!)
                 }
 
                 override fun onFailure(call: Call<TVShowModel>, t: Throwable) {
                     _errorLiveData.value = t.message
                     _errorLiveData.postValue(t.message)
+                    local.getDataLocal()
                 }
             })
     }

@@ -8,5 +8,6 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 class App : Application() {
     override fun onCreate() {
         super.onCreate()
+
     }
 }
