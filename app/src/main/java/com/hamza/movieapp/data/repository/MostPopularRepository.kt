@@ -1,6 +1,5 @@
 package com.hamza.movieapp.data.repository
 
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.hamza.movieapp.data.local.Dao
 import com.hamza.movieapp.data.models.TVShowModel
@@ -18,7 +17,6 @@ class MostPopularRepository @Inject constructor(private val api: ApiCalls, priva
     val _errorLiveData = MutableLiveData<String>()
 
     fun getMostPopularTVShows(page: Int) {
-
         api.getMostPopularTVShow(page)
             .enqueue(object : Callback, retrofit2.Callback<TVShowModel> {
                 override fun onResponse(
@@ -37,5 +35,7 @@ class MostPopularRepository @Inject constructor(private val api: ApiCalls, priva
                 }
             })
     }
+
+
 
 }

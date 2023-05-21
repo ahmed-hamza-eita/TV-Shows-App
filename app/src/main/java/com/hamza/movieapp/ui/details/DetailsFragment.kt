@@ -131,18 +131,7 @@ class DetailsFragment : BaseFragment() {
                             )
                         )
                     }
-//                    binding.imageWatchlist.setOnClickListener {
-//                        CompositeDisposable()
-//                            .add(
-//                                viewModel.addToWatchlist(tvShow!!)
-//                                    .subscribeOn(Schedulers.io()).observeOn(
-//                                        AndroidSchedulers.mainThread()
-//                                    ).subscribe {
-//                                        binding.imageWatchlist.setImageResource(R.drawable.ic_added)
-//                                        showToast("Added to watchlist")
-//                                    }
-//                            )
-//                    }
+
                 }
             }
 

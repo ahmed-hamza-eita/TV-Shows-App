@@ -57,6 +57,9 @@ class MostPopularTVShowsFragment : BaseFragment() {
                 )
             }
         }
+        binding.imageSearch.setOnClickListener {
+            navigate(MostPopularTVShowsFragmentDirections.actionMostPopularTVShowsFragmentToSearchFragment())
+        }
     }
 
     private fun init() {

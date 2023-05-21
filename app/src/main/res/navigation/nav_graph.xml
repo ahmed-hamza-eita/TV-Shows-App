@@ -14,6 +14,9 @@
         <action
             android:id="@+id/action_mostPopularTVShowsFragment_to_detailsFragment"
             app:destination="@id/detailsFragment" />
+        <action
+            android:id="@+id/action_mostPopularTVShowsFragment_to_searchFragment"
+            app:destination="@id/searchFragment" />
     </fragment>
     <fragment
         tools:layout="@layout/details_fragment"
@@ -39,4 +42,16 @@
             android:name="id"
             app:argType="string" />
     </dialog>
+    <fragment
+        tools:layout="@layout/search_fragment"
+        android:id="@+id/searchFragment"
+        android:name="com.hamza.movieapp.ui.search.SearchFragment"
+        android:label="SearchFragment" >
+        <action
+            android:id="@+id/action_searchFragment_to_mostPopularTVShowsFragment"
+            app:destination="@id/mostPopularTVShowsFragment" />
+        <action
+            android:id="@+id/action_searchFragment_to_detailsFragment"
+            app:destination="@id/detailsFragment" />
+    </fragment>
 </navigation>
